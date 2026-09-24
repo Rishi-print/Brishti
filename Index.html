@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>I'm Sorry ❤️</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+
+    <style>
+
+        /* =========================================
+           BASIC RESET
+        ========================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+
+            min-height: 100vh;
+
+            font-family: "Poppins", sans-serif;
+
+            color: white;
+
+            overflow-x: hidden;
+
+            background-image:
+                linear-gradient(
+                    rgba(255, 130, 165, 0.38),
+                    rgba(120, 40, 80, 0.48)
+                ),
+                url("background1.jpg");
+
+            background-size: cover;
+
+            background-position: center;
+
+            background-attachment: fixed;
+        }
+
+
+        /* =========================================
+           SECOND BACKGROUND
+
+           This sits above background1 and fades in
+           when she clicks YES.
+        ========================================= */
+
+        #background2 {
+
+            position: fixed;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            z-index: -2;
+
+            background-image:
+                linear-gradient(
+                    rgba(255, 130, 165, 0.22),
+                    rgba(120, 40, 80, 0.38)
+                ),
+                url("background2.jpg");
+
+            background-size: cover;
+
+            background-position: center;
+
+            background-attachment: fixed;
+
+            opacity: 0;
+
+            transition:
+                opacity 1.6s ease-in-out;
+
+            pointer-events: none;
+        }
+
+
+        /* When YES is clicked */
+
+        body.show-second-background #background2 {
+
+            opacity: 1;
+        }
+
+
+        /* =========================================
+           DARK OVERLAY
+        ========================================= */
+
+        #backgroundOverlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: -1;
+
+            background:
+                rgba(0, 0, 0, 0.08);
+
+            pointer-events: none;
+        }
+
+
+        /* =========================================
+           FLOATING HEARTS
+        ========================================= */
+
+        .floating-heart {
+
+            position: fixed;
+
+            bottom: -60px;
+
+            pointer-events: none;
+
+            z-index: 2;
+
+            opacity: 0;
+
+            animation:
+                floatUp linear forwards;
+        }
+
+
+        @keyframes floatUp {
+
+            0% {
+
+                transform:
+                    translateY(0)
+                    scale(0.7)
+                    rotate(0deg);
+
+                opacity: 0;
+            }
+
+            10% {
+
+                opacity: 0.8;
+            }
+
+            80% {
+
+                opacity: 0.7;
+            }
+
+            100% {
+
+                transform:
+                    translateY(-110vh)
+                    scale(1.3)
+                    rotate(25deg);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================================
+           MAIN CONTAINER
+        ========================================= */
+
+        .container {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 25px;
+
+            position: relative;
+
+            z-index: 5;
+        }
+
+
+        /* =========================================
+           GLASS CARD
+        ========================================= */
+
+        .card {
+
+            width: min(650px, 95vw);
+
+            padding: 45px 35px;
+
+            border-radius: 30px;
+
+            background:
+                rgba(255, 255, 255, 0.17);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.35);
+
+            backdrop-filter:
+                blur(15px);
+
+            -webkit-backdrop-filter:
+                blur(15px);
+
+            box-shadow:
+
+                0 25px 70px
+                rgba(0, 0, 0, 0.25),
+
+                inset 0 1px 0
+                rgba(255, 255, 255, 0.25);
+
+            text-align: center;
+
+            animation:
+                cardAppear 1s ease;
+        }
+
+
+        @keyframes cardAppear {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(30px)
+                    scale(0.96);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+
+        /* =========================================
+           HEART
+        ========================================= */
+
+        .heart {
+
+            font-size: 60px;
+
+            margin-bottom: 10px;
+
+            animation:
+                heartbeat 1.5s infinite;
+        }
+
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+
+                transform:
+                    scale(1);
+            }
+
+            15% {
+
+                transform:
+                    scale(1.15);
+            }
+
+            30% {
+
+                transform:
+                    scale(1);
+            }
+
+            45% {
+
+                transform:
+                    scale(1.12);
+            }
+        }
+
+
+        /* =========================================
+           TEXT
+        ========================================= */
+
+        h1 {
+
+            font-family:
+                "Dancing Script",
+                cursive;
+
+            font-size:
+                clamp(42px, 8vw, 65px);
+
+            margin:
+                5px 0 20px;
+
+            text-shadow:
+                0 4px 15px
+                rgba(0, 0, 0, 0.2);
+        }
+
+
+        p {
+
+            font-size: 16px;
+
+            line-height: 1.8;
+
+            margin:
+                12px auto;
+
+            max-width: 550px;
+        }
+
+
+        .question {
+
+            font-weight: 600;
+
+            font-size: 18px;
+
+            margin-top: 25px;
+        }
+
+
+        /* =========================================
+           NORMAL BUTTON AREA
+        ========================================= */
+
+        .buttons {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 18px;
+
+            margin-top: 30px;
+
+            flex-wrap: wrap;
+        }
+
+
+        button {
+
+            border: none;
+
+            padding:
+                14px 35px;
+
+            border-radius: 50px;
+
+            font-family:
+                "Poppins",
+                sans-serif;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .yes-btn {
+
+            background: white;
+
+            color: #e64980;
+
+            box-shadow:
+                0 8px 25px
+                rgba(0, 0, 0, 0.2);
+        }
+
+
+        .yes-btn:hover {
+
+            transform:
+                scale(1.08);
+
+            box-shadow:
+                0 12px 30px
+                rgba(0, 0, 0, 0.25);
+        }
+
+
+        .no-btn {
+
+            background:
+                rgba(255, 255, 255, 0.20);
+
+            color: white;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.5);
+        }
+
+
+        /* =========================================
+           SCREENS
+        ========================================= */
+
+        .screen {
+
+            display: none;
+        }
+
+
+        .screen.active {
+
+            display: block;
+
+            animation:
+                screenAppear 0.8s ease;
+        }
+
+
+        @keyframes screenAppear {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(25px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* =========================================
+           SECOND QUESTION
+
+           The No button is contained inside this
+           area and therefore can NEVER leave it.
+        ========================================= */
+
+        .button-area {
+
+            position: relative;
+
+            width: 100%;
+
+            height: 180px;
+
+            margin-top: 25px;
+        }
+
+
+        /* YES button stays roughly in the center */
+
+        .button-area .yes-btn {
+
+            position: absolute;
+
+            left: 50%;
+
+            top: 50%;
+
+            transform:
+                translate(-110%, -50%);
+        }
+
+
+        .button-area .yes-btn:hover {
+
+            transform:
+                translate(-110%, -50%)
+                scale(1.08);
+        }
+
+
+        /* =========================================
+           ESCAPING NO BUTTON
+        ========================================= */
+
+        #noButton {
+
+            position: absolute;
+
+            left: 50%;
+
+            top: 50%;
+
+            transform:
+                translate(10%, -50%);
+
+            white-space: nowrap;
+
+            transition:
+                left 0.25s ease,
+                top 0.25s ease,
+                transform 0.15s ease;
+        }
+
+
+        /* =========================================
+           PHOTO GRID
+        ========================================= */
+
+        .photo-intro {
+
+            margin-bottom: 25px;
+        }
+
+
+        .photo-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 14px;
+
+            margin:
+                25px 0;
+        }
+
+
+        .photo {
+
+            width: 100%;
+
+            height: 210px;
+
+            object-fit: cover;
+
+            border-radius: 18px;
+
+            border:
+                3px solid
+                rgba(255, 255, 255, 0.65);
+
+            box-shadow:
+                0 10px 25px
+                rgba(0, 0, 0, 0.2);
+
+            transition:
+                transform 0.3s ease;
+        }
+
+
+        .photo:hover {
+
+            transform:
+                scale(1.04)
+                rotate(-1deg);
+        }
+
+
+        /* =========================================
+           LOVE MESSAGE
+        ========================================= */
+
+        .love-message {
+
+            font-family:
+                "Dancing Script",
+                cursive;
+
+            font-size: 30px;
+
+            margin-top: 25px;
+        }
+
+
+        /* =========================================
+           REASONS
+        ========================================= */
+
+        .reasons {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 12px;
+
+            margin-top: 25px;
+        }
+
+
+        .reason {
+
+            padding: 16px;
+
+            border-radius: 18px;
+
+            background:
+                rgba(255, 255, 255, 0.14);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.20);
+
+            font-size: 14px;
+        }
+
+
+        /* =========================================
+           FINAL LETTER
+        ========================================= */
+
+        .final-letter {
+
+            margin-top: 30px;
+
+            padding: 25px;
+
+            border-radius: 22px;
+
+            background:
+                rgba(255, 255, 255, 0.12);
+        }
+
+
+        .final-letter p {
+
+            font-size: 15px;
+        }
+
+
+        .signature {
+
+            font-family:
+                "Dancing Script",
+                cursive;
+
+            font-size: 30px;
+
+            margin-top: 15px;
+        }
+
+
+        /* =========================================
+           SURE TEXT
+        ========================================= */
+
+        .sure-text {
+
+            font-family:
+                "Dancing Script",
+                cursive;
+
+            font-size: 48px;
+
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================================
+           HEART EXPLOSION
+        ========================================= */
+
+        .burst-heart {
+
+            position: fixed;
+
+            left: 50%;
+
+            top: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            pointer-events: none;
+
+            z-index: 100;
+
+            animation:
+                burst 1.6s ease-out forwards;
+        }
+
+
+        @keyframes burst {
+
+            0% {
+
+                transform:
+                    translate(-50%, -50%)
+                    scale(0);
+
+                opacity: 1;
+            }
+
+            100% {
+
+                transform:
+                    translate(
+                        calc(-50% + var(--x)),
+                        calc(-50% + var(--y))
+                    )
+                    scale(1.5)
+                    rotate(var(--rotation));
+
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================================
+           MUSIC BUTTON
+        ========================================= */
+
+        #musicButton {
+
+            position: fixed;
+
+            bottom: 20px;
+
+            right: 20px;
+
+            z-index: 200;
+
+            width: 48px;
+
+            height: 48px;
+
+            padding: 0;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255, 255, 255, 0.25);
+
+            color: white;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.5);
+
+            backdrop-filter:
+                blur(10px);
+
+            font-size: 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0, 0, 0, 0.2);
+        }
+
+
+        #musicButton:hover {
+
+            transform:
+                scale(1.1);
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 600px) {
+
+            .container {
+
+                padding: 15px;
+            }
+
+
+            .card {
+
+                padding:
+                    35px 22px;
+
+                border-radius: 25px;
+            }
+
+
+            h1 {
+
+                font-size: 45px;
+            }
+
+
+            p {
+
+                font-size: 14px;
+            }
+
+
+            .photo-grid {
+
+                gap: 9px;
+            }
+
+
+            .photo {
+
+                height: 145px;
+            }
+
+
+            .reasons {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .button-area {
+
+                height: 200px;
+            }
+
+
+            button {
+
+                padding:
+                    13px 28px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         AUDIO
+
+         music.mp3 must be in the same folder.
+    ========================================= -->
+
+    <audio
+        id="backgroundMusic"
+        src="music.mp3"
+        loop
+        preload="auto">
+    </audio>
+
+
+    <!-- =========================================
+         SECOND BACKGROUND
+    ========================================= -->
+
+    <div id="background2"></div>
+
+    <div id="backgroundOverlay"></div>
+
+
+    <!-- =========================================
+         MUSIC CONTROL
+
+         If autoplay is blocked, clicking this
+         button will start the music.
+    ========================================= -->
+
+    <button
+        id="musicButton"
+        onclick="toggleMusic()"
+        aria-label="Toggle music">
+
+        🎵
+
+    </button>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================= -->
+
+    <div class="container">
+
+        <div class="card">
+
+
+            <!-- =================================
+                 SCREEN 1
+            ================================== -->
+
+            <div
+                id="apologyScreen"
+                class="screen active">
+
+                <div class="heart">
+                    ❤️
+                </div>
+
+
+                <h1>
+                    I'm Sorry
+                </h1>
+
+
+                <p>
+
+                    I am really really sorry for doing what I did. Even Neymar forgave Leo when he got to know about the bet set forth by Thiago and Mateo. I love you more than you can imagine. You will never have the chance to have any complaints about me ever again- both professionally and personally.
+                </p>
+
+
+                <p>
+
+                    You know how much I love you.
+                    I am really sorry. ❤️
+
+                </p>
+
+
+                <p class="question">
+
+                    Will you please forgive me? Plijjjjjjjj!
+
+                </p>
+
+
+                <div class="buttons">
+
+                    <button
+                        class="yes-btn"
+                        onclick="sayYes()">
+
+                        Yes ❤️
+
+                    </button>
+
+
+                    <button
+                        class="no-btn"
+                        onclick="showSure()">
+
+                        No 😭
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 SCREEN 2
+            ================================== -->
+
+            <div
+                id="sureScreen"
+                class="screen">
+
+                <div class="heart">
+                    🥺
+                </div>
+
+
+                <div class="sure-text">
+
+                    Sure?
+
+                </div>
+
+
+                <p>
+
+                    You're really going to say no to me? Really? Reallyyyyyyy? 🥺
+
+                </p>
+
+
+                <p>
+
+                    Think about it one more time... (Please!)
+
+                </p>
+
+
+                <!--
+                    THE NO BUTTON CAN ONLY MOVE
+                    INSIDE THIS BOX.
+                -->
+
+                <div class="button-area">
+
+
+                    <button
+                        class="yes-btn"
+                        onclick="sayYes()">
+
+                        Okay, yes ❤️
+
+                    </button>
+
+
+                    <button
+                        id="noButton"
+                        class="no-btn">
+
+                        No 😭
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 SCREEN 3
+            ================================== -->
+
+            <div
+                id="forgivenScreen"
+                class="screen">
+
+
+                <div class="heart">
+                    💖
+                </div>
+
+
+                <h1>
+
+                    Yaaaaayyyyyy!
+Alabuuuuu!
+
+                </h1>
+
+
+                <p class="photo-intro">
+
+                    Now send me more chappies :3 🥹❤️
+
+                </p>
+
+
+                <!-- =================================
+                     YOUR PHOTOS
+                ================================== -->
+
+                <div class="photo-grid">
+
+
+                    <img
+                        class="photo"
+                        src="photo1.jpg"
+                        alt="Our memory">
+
+
+                    <img
+                        class="photo"
+                        src="photo2.jpg"
+                        alt="Our memory">
+
+
+                    <img
+                        class="photo"
+                        src="photo3.jpg"
+                        alt="Our memory">
+
+
+                    <img
+                        class="photo"
+                        src="photo4.jpg"
+                        alt="Our memory">
+
+
+                </div>
+
+
+                <div class="love-message">
+
+                    I love you more than you know. ❤️
+
+                </div>
+
+
+                <!-- =================================
+                     REASONS
+                ================================== -->
+
+                <div class="reasons">
+
+
+                    <div class="reason">
+
+                        💕 Because you have the sexiest butt in the world :3
+
+                    </div>
+
+
+                    <div class="reason">
+
+                        🥹 Because you supply me with chappies with angst and sex and loooveee!
+
+                    </div>
+
+
+                    <div class="reason">
+
+                        🫶 Because we can hate on Ronaldo, De Puke, BJP and love Barca and Messi together.
+
+                    </div>
+
+
+                    <div class="reason">
+
+                        ❤️ Because you are Brishti. I mean, you are FUCKING UNBELIEVABLE!
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =================================
+                     FINAL LETTER
+                ================================== -->
+
+                <div class="final-letter">
+
+
+                    <p>
+
+                        I know I haven't been the best
+                        version of myself these past
+                        few days, and have been extremely demotivated about my career.
+
+                    </p>
+
+
+                    <p>
+
+                        But I want you to know that I will make sure you never have to complain about me ever again.
+
+                    </p>
+
+
+                    <p>
+
+                        I'm sorry for making you feel
+                        ignored, unimportant, or anything
+                        less than the fucking Leo-coded princess you are.
+
+                    </p>
+
+
+                    <p>
+
+                        I'll do better in every way possible!
+
+                    </p>
+
+
+                    <div class="signature">
+
+                        Te Amo! ❤️
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+
+        /* =========================================
+           MUSIC
+        ========================================= */
+
+        const music =
+            document.getElementById(
+                "backgroundMusic"
+            );
+
+
+        const musicButton =
+            document.getElementById(
+                "musicButton"
+            );
+
+
+        let musicStarted = false;
+
+
+        /*
+            Try to start music immediately.
+        */
+
+        window.addEventListener(
+            "load",
+            function () {
+
+                music.volume = 0.5;
+
+                music.play()
+                    .then(() => {
+
+                        musicStarted = true;
+
+                        updateMusicButton();
+
+                    })
+                    .catch(() => {
+
+                        /*
+                            Browser blocked autoplay.
+
+                            The first interaction with the
+                            page will start the music.
+                        */
+
+                        musicStarted = false;
+
+                    });
+
+            }
+        );
+
+
+        /*
+            Start music after the first interaction
+            if autoplay was blocked.
+        */
+
+        function startMusic() {
+
+            if (musicStarted) {
+                return;
+            }
+
+            music.volume = 0.5;
+
+            music.play()
+                .then(() => {
+
+                    musicStarted = true;
+
+                    updateMusicButton();
+
+                })
+                .catch(() => {
+
+                    /*
+                        Some browsers may still block
+                        playback until a direct click.
+                    */
+
+                });
+
+        }
+
+
+        /*
+            Listen for the first interaction.
+        */
+
+        document.addEventListener(
+            "click",
+            startMusic,
+            { once: false }
+        );
+
+
+        /*
+            Music button.
+        */
+
+        function toggleMusic() {
+
+            if (music.paused) {
+
+                music.play()
+                    .then(() => {
+
+                        musicStarted = true;
+
+                        updateMusicButton();
+
+                    });
+
+            } else {
+
+                music.pause();
+
+                musicStarted = false;
+
+                updateMusicButton();
+            }
+        }
+
+
+        function updateMusicButton() {
+
+            if (music.paused) {
+
+                musicButton.innerHTML = "🔇";
+
+            } else {
+
+                musicButton.innerHTML = "🎵";
+
+            }
+        }
+
+
+        /* =========================================
+           HEART SYMBOLS
+        ========================================= */
+
+        const heartSymbols = [
+
+            "❤️",
+            "💕",
+            "💗",
+            "💖",
+            "💘",
+            "💓",
+            "💞",
+            "🩷"
+
+        ];
+
+
+        /* =========================================
+           FLOATING HEARTS
+        ========================================= */
+
+        function createFloatingHeart() {
+
+            const heart =
+                document.createElement("div");
+
+
+            heart.classList.add(
+                "floating-heart"
+            );
+
+
+            heart.innerText =
+                heartSymbols[
+                    Math.floor(
+                        Math.random() *
+                        heartSymbols.length
+                    )
+                ];
+
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+
+            heart.style.fontSize =
+                (14 + Math.random() * 22) +
+                "px";
+
+
+            heart.style.animationDuration =
+                (5 + Math.random() * 5) +
+                "s";
+
+
+            document.body.appendChild(
+                heart
+            );
+
+
+            setTimeout(
+                () => {
+
+                    heart.remove();
+
+                },
+                10000
+            );
+        }
+
+
+        /*
+            Constant stream of floating hearts.
+        */
+
+        setInterval(
+            createFloatingHeart,
+            700
+        );
+
+
+        /* =========================================
+           SCREEN SWITCHING
+        ========================================= */
+
+        function showScreen(screenId) {
+
+            document
+                .querySelectorAll(".screen")
+                .forEach(
+                    screen => {
+
+                        screen.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+            document
+                .getElementById(screenId)
+                .classList.add("active");
+        }
+
+
+        /* =========================================
+           YES BUTTON
+        ========================================= */
+
+        function sayYes() {
+
+            /*
+                Make sure music is playing.
+            */
+
+            startMusic();
+
+
+            /*
+                Start background crossfade.
+            */
+
+            document.body.classList.add(
+                "show-second-background"
+            );
+
+
+            /*
+                Explosion of hearts.
+            */
+
+            createHeartExplosion();
+
+
+            /*
+                Change screen after the
+                transition begins.
+            */
+
+            setTimeout(
+                () => {
+
+                    showScreen(
+                        "forgivenScreen"
+                    );
+
+
+                    window.scrollTo({
+
+                        top: 0,
+
+                        behavior: "smooth"
+
+                    });
+
+                },
+                500
+            );
+        }
+
+
+        /* =========================================
+           HEART EXPLOSION
+        ========================================= */
+
+        function createHeartExplosion() {
+
+            const numberOfHearts = 50;
+
+
+            for (
+                let i = 0;
+                i < numberOfHearts;
+                i++
+            ) {
+
+
+                const heart =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                heart.classList.add(
+                    "burst-heart"
+                );
+
+
+                heart.innerText =
+                    heartSymbols[
+                        Math.floor(
+                            Math.random() *
+                            heartSymbols.length
+                        )
+                    ];
+
+
+                /*
+                    Random direction.
+                */
+
+                const angle =
+                    Math.random() *
+                    Math.PI *
+                    2;
+
+
+                const distance =
+                    150 +
+                    Math.random() *
+                    400;
+
+
+                const x =
+                    Math.cos(angle) *
+                    distance;
+
+
+                const y =
+                    Math.sin(angle) *
+                    distance;
+
+
+                const rotation =
+                    Math.random() *
+                    90 -
+                    45;
+
+
+                heart.style.setProperty(
+                    "--x",
+                    x + "px"
+                );
+
+
+                heart.style.setProperty(
+                    "--y",
+                    y + "px"
+                );
+
+
+                heart.style.setProperty(
+                    "--rotation",
+                    rotation + "deg"
+                );
+
+
+                heart.style.animationDelay =
+                    Math.random() *
+                    0.25 +
+                    "s";
+
+
+                heart.style.fontSize =
+                    18 +
+                    Math.random() * 30 +
+                    "px";
+
+
+                document.body.appendChild(
+                    heart
+                );
+
+
+                setTimeout(
+                    () => {
+
+                        heart.remove();
+
+                    },
+                    2000
+                );
+
+            }
+        }
+
+
+        /* =========================================
+           FIRST NO BUTTON
+        ========================================= */
+
+        function showSure() {
+
+            showScreen(
+                "sureScreen"
+            );
+        }
+
+
+        /* =========================================
+           SECOND NO BUTTON
+        =========================================
+
+           The button NEVER uses position: fixed.
+
+           It can only move within .button-area.
+        ========================================= */
+
+        const noButton =
+            document.getElementById(
+                "noButton"
+            );
+
+
+        const buttonArea =
+            document.querySelector(
+                ".button-area"
+            );
+
+
+        function runAway() {
+
+            /*
+                Get dimensions of the safe area.
+            */
+
+            const areaWidth =
+                buttonArea.clientWidth;
+
+
+            const areaHeight =
+                buttonArea.clientHeight;
+
+
+            const buttonWidth =
+                noButton.offsetWidth;
+
+
+            const buttonHeight =
+                noButton.offsetHeight;
+
+
+            /*
+                Keep some space around edges.
+            */
+
+            const padding = 10;
+
+
+            /*
+                Calculate legal positions.
+            */
+
+            const maxX =
+                areaWidth -
+                buttonWidth -
+                padding;
+
+
+            const maxY =
+                areaHeight -
+                buttonHeight -
+                padding;
+
+
+            /*
+                Generate a genuinely random position.
+            */
+
+            const randomX =
+                padding +
+                Math.random() *
+                Math.max(
+                    0,
+                    maxX - padding
+                );
+
+
+            const randomY =
+                padding +
+                Math.random() *
+                Math.max(
+                    0,
+                    maxY - padding
+                );
+
+
+            /*
+                Move the button.
+            */
+
+            noButton.style.left =
+                randomX + "px";
+
+
+            noButton.style.top =
+                randomY + "px";
+
+
+            noButton.style.transform =
+                "scale(1.15)";
+
+
+            setTimeout(
+                () => {
+
+                    noButton.style.transform =
+                        "scale(1)";
+
+                },
+                150
+            );
+        }
+
+
+        /*
+            Mouse reaches the button →
+            BUTTON RUNS AWAY.
+        */
+
+        noButton.addEventListener(
+            "mouseenter",
+            runAway
+        );
+
+
+        /*
+            Phones/tablets:
+            touching it makes it run away.
+        */
+
+        noButton.addEventListener(
+            "touchstart",
+            function(event) {
+
+                event.preventDefault();
+
+                runAway();
+
+            }
+        );
+
+
+    </script>
+
+</body>
+
+</html>
